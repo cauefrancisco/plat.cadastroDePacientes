@@ -1,18 +1,19 @@
 export interface IPaciente {
-  id?: number;
-  nome: string;
-  sobrenome: string;
-  dataNascimento: string;
-  genero: string;
-  cpf?: string;
-  rg: string;
-  uf_RG: string;
-  email: string;
-  celular?: string;
-  telefoneFixo?: string;
-  convenioId?: number;
-  numeroCarteirinha?: string;
+  Id?: number;
+  Nome: string;
+  Sobrenome: string;
+  DataNascimento: string;
+  Genero: string;
+  CPF?: string;
+  Rg: string;
+  UF_RG: string;
+  Email: string;
+  Celular?: string;
+  TelefoneFixo?: string;
+  ConvenioId?: number;
+  NumeroCarteirinha?: string;
+  ConvenioNome?: string;
   validadeCarteirinha?: string;
-  isActive?: boolean;
+  IsActive?: boolean;
 }
 

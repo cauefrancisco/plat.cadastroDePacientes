@@ -1,0 +1,14 @@
+<main>
+  <h2 mat-dialog-title [ngClass]="{ 'error-title': data.isError, 'success-title': !data.isError }">
+    {{ data.title }}
+  </h2>
+
+  <section class="content">
+    <p>{{ data.message }}</p>
+  </section>
+
+  <mat-dialog-actions align="end">
+    <button mat-button (click)="close()">Fechar</button>
+  </mat-dialog-actions>
+
+</main>

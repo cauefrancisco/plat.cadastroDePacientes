@@ -1,6 +1,6 @@
 <main>
   <section class="upper-section">
-    <h2>Cadastrar novo Paciente</h2>
+    <h2>Cadastrar novo paciente </h2>
   </section>
 
   <hr>
@@ -22,12 +22,16 @@
           <mat-form-field class="form-field" appearance="fill">
             <mat-label>Data de nascimento</mat-label>
             <input matInput type="date" formControlName="birthDate" required>
-            <mat-error *ngIf="form.get('birthDate')?.hasError('required')">
+            @if(form.get('birthDate')?.hasError('required')){
+            <mat-error>
               <span>A data de nascimento é obrigatória.</span>
             </mat-error>
-            <mat-error *ngIf="form.get('birthDate')?.hasError('invalidDate')">
+            }
+            @if(form.get('birthDate')?.hasError('invalidDate')){
+            <mat-error>
               <span>Insira uma data válida.</span>
             </mat-error>
+            }
           </mat-form-field>
 
           <mat-form-field class="form-field" appearance="fill">
@@ -37,9 +41,11 @@
                 {{ option.label }}
               </mat-option>
             </mat-select>
-            <mat-error *ngIf="form.get('gender')?.hasError('required')">
+            @if(form.get('gender')?.hasError('required')){
+            <mat-error>
               O campo de gênero é obrigatório.
             </mat-error>
+            }
           </mat-form-field>
 
 
@@ -68,13 +74,18 @@
           <mat-form-field appearance="fill">
             <mat-label>UF</mat-label>
             <mat-select formControlName="uf" required>
-              <mat-option *ngFor="let estado of estadosBrasil" [value]="estado.sigla">
+              @for (estado of estadosBrasil; track estado) {
+              <mat-option [value]="estado.sigla">
                 {{ estado.sigla }} - {{ estado.nome }}
               </mat-option>
+              }
             </mat-select>
-            <mat-error *ngIf="F_uf.hasError('required')">
+
+            @if (F_uf.hasError('required')) {
+            <mat-error>
               Informe o estado (UF) do RG.
             </mat-error>
+            }
           </mat-form-field>
 
 
@@ -97,19 +108,23 @@
           </mat-form-field>
           <mat-form-field class="form-field" appearance="fill">
             <mat-label>Telefone fixo</mat-label>
-            <input matInput formControlName="landline" placeholder="(11) 1234-5678">
-            <mat-error *ngIf="form.get('landline')?.hasError('invalidPhone')">
+            <input matInput formControlName="landline" mask="(00) 0000-0000" placeholder="(11) 1234-5678">
+            @if(form.get('landline')?.hasError('invalidPhone')){
+            <mat-error>
               Telefone fixo inválido.
             </mat-error>
+            }
           </mat-form-field>
 
           <mat-form-field class="form-field" appearance="fill">
             <mat-label>Celular</mat-label>
             <input matInput formControlName="mobile" mask="(00) 00000-0000"
               placeholder="(11) 91234-5678">
-            <mat-error *ngIf="form.get('mobile')?.hasError('invalidPhone')">
+            @if(form.get('mobile')?.hasError('invalidPhone')){
+            <mat-error>
               Celular inválido.
             </mat-error>
+            }
           </mat-form-field>
 
           <mat-error *ngIf="form.hasError('atLeastOnePhone')">
@@ -128,25 +143,29 @@
 
         <mat-step>
           <ng-template matStepLabel>Convênio</ng-template>
+
           <mat-form-field class="form-field" appearance="fill">
             <mat-label>Convênio</mat-label>
             <mat-select formControlName="insurance" required>
-              <mat-option *ngFor="let convenio of convenios" [value]="convenio.id">
-                {{ convenio.nome }}
+              @for (convenio of convenios; track convenio) {
+              <mat-option [value]="convenio?.Id">
+                {{convenio.Nome }}
               </mat-option>
+              }
             </mat-select>
-            <mat-error *ngIf="form.get('insurance')?.hasError('required')">
-              Selecione um convênio.
+            <mat-error>
+              {{InsurenceValidationError()}}
             </mat-error>
           </mat-form-field>
 
-          <!-- Campo: Número da carteirinha -->
           <mat-form-field class="form-field" appearance="fill">
             <mat-label>Número da carteirinha</mat-label>
             <input matInput formControlName="cardNumber" placeholder="1234567890" required>
-            <mat-error *ngIf="form.get('cardNumber')?.hasError('required')">
+            @if(form.get('cardNumber')?.hasError('required')){
+            <mat-error>
               O número da carteirinha é obrigatório.
             </mat-error>
+            }
           </mat-form-field>
 
           <mat-form-field appearance="fill">
@@ -159,21 +178,25 @@
               required
               [dropSpecialCharacters]="false"
               [showMaskTyped]="true">
-            <mat-error *ngIf="F_validity.hasError('required')">
+            @if(F_validity.hasError('required')){
+            <mat-error>
               Informe a validade da carteirinha.
             </mat-error>
-            <mat-error *ngIf="F_validity.hasError('invalidDate')">
+            }
+            @if(F_validity.hasError('invalidDate')){
+            <mat-error>
               Informe uma data válida no formato MM/YYYY.
             </mat-error>
-            <mat-error *ngIf="F_validity.hasError('pastDate')">
+            }
+            @if(F_validity.hasError('pastDate')){
+            <mat-error>
               A validade deve ser maior que a data atual.
             </mat-error>
+            }
           </mat-form-field>
-
 
           <div class="stepper-btn-row">
             <button matButton matStepperPrevious class="stepper-back-btn">Voltar</button>
-            <!-- <button matButton (click)="stepper.reset()" class="stepper-back-btn">Rese</button> -->
           </div>
         </mat-step>
       </mat-stepper>

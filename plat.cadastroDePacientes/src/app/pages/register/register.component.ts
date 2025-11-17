@@ -1,30 +1,33 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { FeedBackModalComponent } from 'src/app/core/componets/feed-back-modal/feed-back-modal.component';
 import { PatientsService } from 'src/app/services/patients.service';
 import { Gender } from 'src/app/shared/enums/gender.enum';
-import { IPaciente } from 'src/app/shared/interfaces/patients.interface';
+import { IConvenio } from 'src/app/shared/interfaces/convenio.interface';
 
 @Component({
-    selector: 'app-register',
-    templateUrl: './register.component.html',
-    styleUrls: ['./register.component.scss'],
-    standalone: false
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.scss'],
+  standalone: false
 })
 export class RegisterComponent implements OnInit {
   public form: FormGroup;
   public formError: any;
   public isLinear = false;
   public startDate = new Date();
-
+  public isEditingRoute = false;
+  public convenios!: IConvenio[];
 
   constructor(
     public dialogRef: MatDialogRef<RegisterComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private _formbuilder: FormBuilder,
     private _patientServive: PatientsService,
-    private _router: Router,
+    public matDialog: MatDialog,
+    public router: Router,
   ) {
     this.form = this._formbuilder.group({
       id: [],
@@ -38,7 +41,7 @@ export class RegisterComponent implements OnInit {
       birthDate: ['', [Validators.required, this.validateBirthDate]],
       landline: [''],
       mobile: [''],
-      insurance: ['', Validators.required],
+      insurance: [null, Validators.required],
       cardNumber: ['', Validators.required],
       validity: ['', [Validators.required, this.monthYearValidator]],
     }, { validators: [this.atLeastOnePhoneValidator] });
@@ -58,12 +61,6 @@ export class RegisterComponent implements OnInit {
   public get F_insurance(): AbstractControl { return this.form.get('insurance') as AbstractControl; }
   public get F_cardNumber(): AbstractControl { return this.form.get('cardNumber') as AbstractControl; }
   public get F_validity(): AbstractControl { return this.form.get('validity') as AbstractControl; }
-
-  convenios = [
-    { id: 1, nome: 'Unimed' },
-    { id: 2, nome: 'Bradesco Saúde' },
-    { id: 3, nome: 'Amil' },
-  ];
 
   genderOptions = [
     { value: Gender.Masculino, label: 'Masculino' },
@@ -103,27 +100,37 @@ export class RegisterComponent implements OnInit {
 
 
   ngOnInit() {
-
-    // já existe o this.form criado no construtor
-    this.form.get('validity')?.valueChanges.subscribe(value => {
-      console.log('Valor digitado em validity:', value);
-    });
-
+    this.getConvenios();
   }
-
-
 
   public close(): void {
     this.dialogRef.close(false);
   }
 
-  public confirm() {
+  public confirm(): void {
     this.submitNewPatient();
-    this._router.navigateByUrl('listing');
-    this.dialogRef.close(true);
   }
 
-  validateBirthDate(control: AbstractControl) {
+  public getConvenios(): void {
+    this._patientServive.listarConvenios().subscribe({
+      next: (res) => {
+        if (res && res.length > 0) {
+          this.convenios = res.filter(
+            (value, index, self) =>
+              index === self.findIndex((c) => c.Nome === value.Nome)
+          );
+          this.F_insurance.updateValueAndValidity();
+        }
+      },
+      error: (err) => {
+        // Feedback de erro
+        console.error('Erro ao buscar convênios:', err);
+        alert('Não foi possível carregar os convênios. Tente novamente mais tarde.')
+      }
+    })
+  }
+
+  public validateBirthDate(control: AbstractControl): ValidationErrors | null {
     const value = control.value;
     const date = new Date(value);
     const today = new Date();
@@ -139,7 +146,7 @@ export class RegisterComponent implements OnInit {
     return null;
   }
 
-  atLeastOnePhoneValidator(group: AbstractControl): ValidationErrors | null {
+  public atLeastOnePhoneValidator(group: AbstractControl): ValidationErrors | null {
     const landline = group.get('landline')?.value;
     const mobile = group.get('mobile')?.value;
 
@@ -164,7 +171,7 @@ export class RegisterComponent implements OnInit {
   }
 
 
-  monthYearValidator(control: AbstractControl): ValidationErrors | null {
+  public monthYearValidator(control: AbstractControl): ValidationErrors | null {
     const value = control.value;
     if (!value) return null;
 
@@ -203,7 +210,7 @@ export class RegisterComponent implements OnInit {
     return inputDate <= currentDate ? { pastDate: true } : null;
   }
 
-  validityNotInPast(control: AbstractControl): ValidationErrors | null {
+  public validityNotInPast(control: AbstractControl): ValidationErrors | null {
     const value = control.value;
     if (!value) return null;
 
@@ -222,29 +229,54 @@ export class RegisterComponent implements OnInit {
     return isPast ? { pastDateNotAllowed: true } : null;
   }
 
-  public submitNewPatient() {
+  public submitNewPatient(): void {
     const payloadPatient = {
-      genero: this.F_gender.value,
-      nome: this.F_name.value,
-      sobrenome: this.F_lastName.value,
-      email: this.F_email.value,
-      rg: this.F_rg.value,
-      cpf: this.F_cpf.value,
-      uf_RG: this.F_uf.value,
-      dataNascimento: this.F_birthDate.value,
-      telefoneFixo: this.F_landline.value,
-      celular: this.F_mobile.value,
-      convenioId: this.F_insurance.value,
-      numeroCarteirinha: this.F_cardNumber.value,
-      validadeCarteirinha: this.F_validity.value,
-    } as IPaciente
-    console.log('payloadPatient: ', payloadPatient)
-    // this._patientServive.createPatient(payloadPatient);
-    this._patientServive.criarPaciente(payloadPatient).subscribe((res) => {
-      if (res) {
-        console.log('res', res);
+      Genero: this.F_gender.value,
+      Nome: this.F_name.value,
+      Sobrenome: this.F_lastName.value,
+      Email: this.F_email.value,
+      Rg: this.F_rg.value,
+      CPF: this.F_cpf.value,
+      UF_RG: this.F_uf.value,
+      DataNascimento: this.F_birthDate.value,
+      TelefoneFixo: this.F_landline.value,
+      Celular: this.F_mobile.value,
+      ConvenioId: this.F_insurance.value,
+      NumeroCarteirinha: this.F_cardNumber.value,
+      ValidadeCarteirinha: this.F_validity.value,
+    }
+    this._patientServive.criarPaciente(payloadPatient).subscribe({
+      next: (res) => {
+        if (res) {
+          console.log('res', res);
+          this.matDialog.open(FeedBackModalComponent, {
+            data: {
+              title: 'Sucesso',
+              message: 'Paciente cadastrado com sucesso!',
+              isError: false
+            }
+          }).afterClosed().subscribe(() => { this.dialogRef.close(true); this.router.navigateByUrl('listing') });
+        }
+      },
+      error: (err) => {
+        this.matDialog.open(FeedBackModalComponent, {
+          data: {
+            title: 'Erro',
+            message: err || 'Erro ao cadastrar Paciente!',
+            isError: true
+          }
+        })
       }
-    });
+    })
+
+
+  }
+
+  public InsurenceValidationError(): string {
+    if (this.F_insurance?.hasError('required')) {
+      return this.formError = 'Selecione um convênio.';
+    }
+    return this.formError = '';
   }
 
 }

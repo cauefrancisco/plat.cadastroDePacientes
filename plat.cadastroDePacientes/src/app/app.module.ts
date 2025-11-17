@@ -10,9 +10,11 @@ import { heroUsers } from '@ng-icons/heroicons/outline';
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FooterComponent } from './core/components/footer/footer.component';
-import { HeaderComponent } from './core/components/header/header.component';
-import { MainComponent } from './core/components/layout/main/main.component';
+import { FeedBackModalComponent } from './core/componets/feed-back-modal/feed-back-modal.component';
+import { FooterComponent } from './core/layout/components/footer/footer.component';
+import { HeaderComponent } from './core/layout/components/header/header.component';
+import { MainComponent } from './core/layout/main/main.component';
+import { EditComponent } from './pages/edit/edit.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ListingComponent } from './pages/listing/listing.component';
 import { RegisterComponent } from './pages/register/register.component';
@@ -34,6 +36,8 @@ import { RgPipe } from './shared/pipes/rg.pipe';
         CpfCnpjPipe,
         RgPipe,
         PhoneBrPipe,
+        FeedBackModalComponent,
+        EditComponent,
     ],
     bootstrap: [AppComponent],
     imports: [
