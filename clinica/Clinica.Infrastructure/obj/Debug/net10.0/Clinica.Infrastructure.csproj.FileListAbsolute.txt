@@ -1,0 +1,15 @@
+C:\Users\cauef\OneDrive\Documents\coding\testes_tecnicos\plat.cadastro_de_pacientes\clinica\Clinica.Infrastructure\bin\Debug\net10.0\Clinica.Infrastructure.deps.json
+C:\Users\cauef\OneDrive\Documents\coding\testes_tecnicos\plat.cadastro_de_pacientes\clinica\Clinica.Infrastructure\bin\Debug\net10.0\Clinica.Infrastructure.dll
+C:\Users\cauef\OneDrive\Documents\coding\testes_tecnicos\plat.cadastro_de_pacientes\clinica\Clinica.Infrastructure\bin\Debug\net10.0\Clinica.Infrastructure.pdb
+C:\Users\cauef\OneDrive\Documents\coding\testes_tecnicos\plat.cadastro_de_pacientes\clinica\Clinica.Infrastructure\bin\Debug\net10.0\Clinica.Domain.dll
+C:\Users\cauef\OneDrive\Documents\coding\testes_tecnicos\plat.cadastro_de_pacientes\clinica\Clinica.Infrastructure\bin\Debug\net10.0\Clinica.Domain.pdb
+C:\Users\cauef\OneDrive\Documents\coding\testes_tecnicos\plat.cadastro_de_pacientes\clinica\Clinica.Infrastructure\obj\Debug\net10.0\Clinica.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\cauef\OneDrive\Documents\coding\testes_tecnicos\plat.cadastro_de_pacientes\clinica\Clinica.Infrastructure\obj\Debug\net10.0\Clinica.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\cauef\OneDrive\Documents\coding\testes_tecnicos\plat.cadastro_de_pacientes\clinica\Clinica.Infrastructure\obj\Debug\net10.0\Clinica.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\cauef\OneDrive\Documents\coding\testes_tecnicos\plat.cadastro_de_pacientes\clinica\Clinica.Infrastructure\obj\Debug\net10.0\Clinica.Infrastructure.AssemblyInfo.cs
+C:\Users\cauef\OneDrive\Documents\coding\testes_tecnicos\plat.cadastro_de_pacientes\clinica\Clinica.Infrastructure\obj\Debug\net10.0\Clinica.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\cauef\OneDrive\Documents\coding\testes_tecnicos\plat.cadastro_de_pacientes\clinica\Clinica.Infrastructure\obj\Debug\net10.0\Clinica..0DDBE4D2.Up2Date
+C:\Users\cauef\OneDrive\Documents\coding\testes_tecnicos\plat.cadastro_de_pacientes\clinica\Clinica.Infrastructure\obj\Debug\net10.0\Clinica.Infrastructure.dll
+C:\Users\cauef\OneDrive\Documents\coding\testes_tecnicos\plat.cadastro_de_pacientes\clinica\Clinica.Infrastructure\obj\Debug\net10.0\refint\Clinica.Infrastructure.dll
+C:\Users\cauef\OneDrive\Documents\coding\testes_tecnicos\plat.cadastro_de_pacientes\clinica\Clinica.Infrastructure\obj\Debug\net10.0\Clinica.Infrastructure.pdb
+C:\Users\cauef\OneDrive\Documents\coding\testes_tecnicos\plat.cadastro_de_pacientes\clinica\Clinica.Infrastructure\obj\Debug\net10.0\ref\Clinica.Infrastructure.dll

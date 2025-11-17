@@ -1,0 +1,23 @@
+<main>
+
+  <section class="navigation">
+
+    <div (click)="addNewPatient()" class="add">
+      <h2>Cadastrar Paciente</h2>
+      <mat-icon class="material-symbols-outlined"
+        matTooltip="Adicionar paciente">
+        add
+      </mat-icon>
+    </div>
+
+    <div class="search" (click)="navigateTo('listing')">
+      <h2>Buscar Paciente</h2>
+      <mat-icon class="material-symbols-outlined"
+        matTooltip="Buscar paciente">
+        search
+      </mat-icon>
+    </div>
+
+
+  </section>
+</main>

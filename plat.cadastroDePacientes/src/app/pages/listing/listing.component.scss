@@ -1,0 +1,31 @@
+@import './../../../styles.scss';
+
+main{
+  padding: 2rem 0;
+  overflow: auto;
+  
+  .upper-section{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 2rem;
+    padding: 2rem ;
+    
+
+    .btn-back{
+      color: whitesmoke;
+      background-color: $emeraldGreen;
+      border: 1px solid $emeraldGreen;
+      height: 42px;
+      width: 120px;
+    }
+
+    .form-field{
+      max-width: 240px;
+    }
+  }
+
+  .table-section{
+    padding: 0 2rem;
+  }
+}

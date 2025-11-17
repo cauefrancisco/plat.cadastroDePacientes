@@ -1,0 +1,105 @@
+<main>
+
+  <section class="upper-section">
+
+    <button mat-raised-button class="btn-back" (click)="navigateTo('')">
+      <mat-icon>arrow_back</mat-icon>
+      Voltar
+    </button>
+
+
+  </section>
+
+
+  <section class="table-section">
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Buscar paciente</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Digite nome, CPF, convênio...">
+    </mat-form-field>
+
+    <table mat-table [dataSource]="pacientes" class="mat-elevation-z8">
+
+      <ng-container matColumnDef="Id">
+        <th mat-header-cell *matHeaderCellDef>ID</th>
+        <td mat-cell *matCellDef="let p">{{ p.Id }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="Nome">
+        <th mat-header-cell *matHeaderCellDef>Nome</th>
+        <td mat-cell *matCellDef="let p">{{ p.Nome }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="Sobrenome">
+        <th mat-header-cell *matHeaderCellDef>Sobrenome</th>
+        <td mat-cell *matCellDef="let p">{{ p.Sobrenome }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="DataNascimento">
+        <th mat-header-cell *matHeaderCellDef>Data de nascimento</th>
+        <td mat-cell *matCellDef="let p">{{ p.DataNascimento | date:'dd/MM/yyyy' }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="Genero">
+        <th mat-header-cell *matHeaderCellDef>Gênero</th>
+        <td mat-cell *matCellDef="let p">{{ returnGenderLabel(p.Genero) }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="CPF">
+        <th mat-header-cell *matHeaderCellDef>CPF</th>
+        <td mat-cell *matCellDef="let p">{{ p.CPF | cpfCnpj }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="RG">
+        <th mat-header-cell *matHeaderCellDef>RG</th>
+        <td mat-cell *matCellDef="let p">{{ p.RG | rg }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="UF_RG">
+        <th mat-header-cell *matHeaderCellDef>UF RG</th>
+        <td mat-cell *matCellDef="let p">{{ p.UF_RG }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="Email">
+        <th mat-header-cell *matHeaderCellDef>Email</th>
+        <td mat-cell *matCellDef="let p">{{ p.Email }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="Celular">
+        <th mat-header-cell *matHeaderCellDef>Celular</th>
+        <td mat-cell *matCellDef="let p">{{ p.Celular | phoneBr }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="TelefoneFixo">
+        <th mat-header-cell *matHeaderCellDef>Telefone fixo</th>
+        <td mat-cell *matCellDef="let p">{{ p.TelefoneFixo | phoneBr }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="ConvenioNome">
+        <th mat-header-cell *matHeaderCellDef>Convênio</th>
+        <td mat-cell *matCellDef="let p">{{ p.ConvenioNome }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="NumeroCarteirinha">
+        <th mat-header-cell *matHeaderCellDef>Carteirinha</th>
+        <td mat-cell *matCellDef="let p">{{ p.NumeroCarteirinha }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="ValidadeCarteirinha">
+        <th mat-header-cell *matHeaderCellDef>Validade</th>
+        <td mat-cell *matCellDef="let p">{{ p.ValidadeCarteirinha }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Ações</th>
+        <td mat-cell *matCellDef="let p">
+          <button mat-icon-button color="primary" (click)="editarPaciente(p)">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </section>
+</main>

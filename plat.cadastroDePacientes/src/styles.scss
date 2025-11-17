@@ -1,0 +1,16 @@
+
+/* All project styles are in the folder style imported here */
+@import './styles/main.scss';
+
+.mat-step-icon-selected {
+  background-color: $emeraldGreen !important;
+}
+
+.mat-step-icon-state-edit {
+    background-color: $emeraldGreen !important;
+
+}
+mat-step-header {
+      font-weight: 600 !important;
+      background-color: none !important;
+    }

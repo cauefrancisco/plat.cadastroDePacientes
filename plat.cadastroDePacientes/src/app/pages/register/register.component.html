@@ -1,0 +1,190 @@
+<main>
+  <section class="upper-section">
+    <h2>Cadastrar novo Paciente</h2>
+  </section>
+
+  <hr>
+
+  <section class="fields-section">
+    <form [formGroup]="form">
+      <mat-stepper orientation="vertical" [linear]="true" #stepper>
+
+        <mat-step class="basic-info">
+          <ng-template matStepLabel>Informações Básicas</ng-template>
+          <mat-form-field class="form-field">
+            <mat-label>Nome</mat-label>
+            <input matInput placeholder="Nome" formControlName="name" required>
+          </mat-form-field>
+          <mat-form-field class="form-field">
+            <mat-label>Sobrenome</mat-label>
+            <input matInput placeholder="Sobrenome" formControlName="lastName" required>
+          </mat-form-field>
+          <mat-form-field class="form-field" appearance="fill">
+            <mat-label>Data de nascimento</mat-label>
+            <input matInput type="date" formControlName="birthDate" required>
+            <mat-error *ngIf="form.get('birthDate')?.hasError('required')">
+              <span>A data de nascimento é obrigatória.</span>
+            </mat-error>
+            <mat-error *ngIf="form.get('birthDate')?.hasError('invalidDate')">
+              <span>Insira uma data válida.</span>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="form-field" appearance="fill">
+            <mat-label>Gênero</mat-label>
+            <mat-select formControlName="gender" required>
+              <mat-option *ngFor="let option of genderOptions" [value]="option.label">
+                {{ option.label }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="form.get('gender')?.hasError('required')">
+              O campo de gênero é obrigatório.
+            </mat-error>
+          </mat-form-field>
+
+
+          <div class="stepper-btn-row">
+            <button
+              matButton
+              matStepperNext
+              [disabled]="!form.get('name')?.value || !form.get('lastName')?.value || !form.get('birthDate')?.value || !form.get('gender')?.value"
+              class="stepper-next-btn">Próximo</button>
+          </div>
+        </mat-step>
+
+        <mat-step class="documents">
+          <ng-template matStepLabel>Documentos pessoais</ng-template>
+          <mat-form-field class="form-field">
+            <mat-label>CPF</mat-label>
+            <input matInput formControlName="cpf" mask="000.000.000-00">
+          </mat-form-field>
+          <mat-form-field class="form-field">
+            <mat-label>RG</mat-label>
+            <input matInput formControlName="rg"
+              mask="00.000.000-0"
+              required>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>UF</mat-label>
+            <mat-select formControlName="uf" required>
+              <mat-option *ngFor="let estado of estadosBrasil" [value]="estado.sigla">
+                {{ estado.sigla }} - {{ estado.nome }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="F_uf.hasError('required')">
+              Informe o estado (UF) do RG.
+            </mat-error>
+          </mat-form-field>
+
+
+          <div class="stepper-btn-row">
+            <button matButton matStepperPrevious class="stepper-back-btn">Voltar</button>
+            <button
+              matButton
+              matStepperNext
+              [disabled]="!form.get('rg')?.value || !form.get('uf')?.value"
+              class="stepper-next-btn">Próximo</button>
+          </div>
+        </mat-step>
+
+        <mat-step class="contact">
+          <ng-template matStepLabel>Contato</ng-template>
+          <mat-form-field class="form-field">
+            <mat-label>Email</mat-label>
+            <input matInput type="email" formControlName="email"
+              required>
+          </mat-form-field>
+          <mat-form-field class="form-field" appearance="fill">
+            <mat-label>Telefone fixo</mat-label>
+            <input matInput formControlName="landline" placeholder="(11) 1234-5678">
+            <mat-error *ngIf="form.get('landline')?.hasError('invalidPhone')">
+              Telefone fixo inválido.
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="form-field" appearance="fill">
+            <mat-label>Celular</mat-label>
+            <input matInput formControlName="mobile" mask="(00) 00000-0000"
+              placeholder="(11) 91234-5678">
+            <mat-error *ngIf="form.get('mobile')?.hasError('invalidPhone')">
+              Celular inválido.
+            </mat-error>
+          </mat-form-field>
+
+          <mat-error *ngIf="form.hasError('atLeastOnePhone')">
+            Preencha pelo menos um telefone válido.
+          </mat-error>
+
+          <div class="stepper-btn-row">
+            <button matButton matStepperPrevious class="stepper-back-btn">Voltar</button>
+            <button
+              matButton
+              matStepperNext
+              [disabled]="form.hasError('atLeastOnePhone') || !form.get('email')?.value"
+              class="stepper-next-btn">Próximo</button>
+          </div>
+        </mat-step>
+
+        <mat-step>
+          <ng-template matStepLabel>Convênio</ng-template>
+          <mat-form-field class="form-field" appearance="fill">
+            <mat-label>Convênio</mat-label>
+            <mat-select formControlName="insurance" required>
+              <mat-option *ngFor="let convenio of convenios" [value]="convenio.id">
+                {{ convenio.nome }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="form.get('insurance')?.hasError('required')">
+              Selecione um convênio.
+            </mat-error>
+          </mat-form-field>
+
+          <!-- Campo: Número da carteirinha -->
+          <mat-form-field class="form-field" appearance="fill">
+            <mat-label>Número da carteirinha</mat-label>
+            <input matInput formControlName="cardNumber" placeholder="1234567890" required>
+            <mat-error *ngIf="form.get('cardNumber')?.hasError('required')">
+              O número da carteirinha é obrigatório.
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Validade</mat-label>
+            <input
+              matInput
+              formControlName="validity"
+              placeholder="MM/YYYY"
+              mask="00/0000"
+              required
+              [dropSpecialCharacters]="false"
+              [showMaskTyped]="true">
+            <mat-error *ngIf="F_validity.hasError('required')">
+              Informe a validade da carteirinha.
+            </mat-error>
+            <mat-error *ngIf="F_validity.hasError('invalidDate')">
+              Informe uma data válida no formato MM/YYYY.
+            </mat-error>
+            <mat-error *ngIf="F_validity.hasError('pastDate')">
+              A validade deve ser maior que a data atual.
+            </mat-error>
+          </mat-form-field>
+
+
+          <div class="stepper-btn-row">
+            <button matButton matStepperPrevious class="stepper-back-btn">Voltar</button>
+            <!-- <button matButton (click)="stepper.reset()" class="stepper-back-btn">Rese</button> -->
+          </div>
+        </mat-step>
+      </mat-stepper>
+
+    </form>
+  </section>
+
+  <section class="bottom-section">
+    <div class="button-row">
+      <button matButton="elevated" (click)="close()" class="cancel-btn">Cancelar</button>
+      <button matButton="elevated" (click)="confirm()" class="confirm-btn" [disabled]="this.form.invalid || !this.form.value">Confirmar</button>
+    </div>
+  </section>
+</main>

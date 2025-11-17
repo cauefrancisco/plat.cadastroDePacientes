@@ -1,0 +1,56 @@
+@import "./../../../styles.scss";
+
+main{
+  padding-top: 5rem;
+  width: 100%;
+  height: 100%;
+
+  .navigation{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 2rem;
+    width: 100%;
+    height: 100%;
+
+    .add, .search{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 16.5rem;
+      height: 16rem;
+      border: 1px solid $emeraldGreen;
+      cursor: pointer;
+      // box-shadow: -1px -5px 5px  rgba(88, 110, 123, 0.5);
+      border-radius: 5%;
+      transition: all 0.3s ease-out;
+      font-weight: 600;
+        mat-icon{
+            // border: 2px solid $emeraldGreen;
+            // border-radius: 50%;
+            width: 4rem;
+            height: 4rem;
+            padding: 10px;
+            color: $emeraldGreen;
+            font-weight: 600;
+            font-size: 3.4rem;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        &:hover {
+        transform: translateY(-5px) scale(1.005) translateZ(0);
+        box-shadow: 0 24px 36px rgba(0,0,0,0.11),
+          0 24px 46px var(--box-shadow-color);
+        background-color: $emeraldGreen;
+          mat-icon{
+            color: #2E2E2E;
+          }
+        }
+        &:hover .overlay {
+          transform: scale(4) translateZ(0);
+        }
+    }
+  }
+}

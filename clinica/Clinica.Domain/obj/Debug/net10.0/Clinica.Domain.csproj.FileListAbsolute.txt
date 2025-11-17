@@ -1,0 +1,11 @@
+C:\Users\cauef\OneDrive\Documents\coding\testes_tecnicos\plat.cadastro_de_pacientes\clinica\Clinica.Domain\bin\Debug\net10.0\Clinica.Domain.deps.json
+C:\Users\cauef\OneDrive\Documents\coding\testes_tecnicos\plat.cadastro_de_pacientes\clinica\Clinica.Domain\bin\Debug\net10.0\Clinica.Domain.dll
+C:\Users\cauef\OneDrive\Documents\coding\testes_tecnicos\plat.cadastro_de_pacientes\clinica\Clinica.Domain\bin\Debug\net10.0\Clinica.Domain.pdb
+C:\Users\cauef\OneDrive\Documents\coding\testes_tecnicos\plat.cadastro_de_pacientes\clinica\Clinica.Domain\obj\Debug\net10.0\Clinica.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\cauef\OneDrive\Documents\coding\testes_tecnicos\plat.cadastro_de_pacientes\clinica\Clinica.Domain\obj\Debug\net10.0\Clinica.Domain.AssemblyInfoInputs.cache
+C:\Users\cauef\OneDrive\Documents\coding\testes_tecnicos\plat.cadastro_de_pacientes\clinica\Clinica.Domain\obj\Debug\net10.0\Clinica.Domain.AssemblyInfo.cs
+C:\Users\cauef\OneDrive\Documents\coding\testes_tecnicos\plat.cadastro_de_pacientes\clinica\Clinica.Domain\obj\Debug\net10.0\Clinica.Domain.csproj.CoreCompileInputs.cache
+C:\Users\cauef\OneDrive\Documents\coding\testes_tecnicos\plat.cadastro_de_pacientes\clinica\Clinica.Domain\obj\Debug\net10.0\Clinica.Domain.dll
+C:\Users\cauef\OneDrive\Documents\coding\testes_tecnicos\plat.cadastro_de_pacientes\clinica\Clinica.Domain\obj\Debug\net10.0\refint\Clinica.Domain.dll
+C:\Users\cauef\OneDrive\Documents\coding\testes_tecnicos\plat.cadastro_de_pacientes\clinica\Clinica.Domain\obj\Debug\net10.0\Clinica.Domain.pdb
+C:\Users\cauef\OneDrive\Documents\coding\testes_tecnicos\plat.cadastro_de_pacientes\clinica\Clinica.Domain\obj\Debug\net10.0\ref\Clinica.Domain.dll
