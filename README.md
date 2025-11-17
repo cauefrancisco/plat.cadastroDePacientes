@@ -37,7 +37,7 @@ A ConnectionString já está configurada corretamente no arquivo Clinica.API/app
 ⚠️ Não é necessário alterar a string de conexão, apenas garantir que a instância RDS esteja acessível e liberada no grupo de segurança (porta 1433 aberta).
 
 
-## 5. Rodando a API (.NET 8)
+## 2. Rodando a API (.NET 8)
 
   ```bash
   cd clinica/Clinica.API
@@ -51,7 +51,7 @@ dotnet run
 https://localhost:5001/swagger
 http://localhost:5000/swagger
 
-## 6. Rodando o Frontend (Angular)
+## 3. Rodando o Frontend (Angular)
 
 
   ```bash
