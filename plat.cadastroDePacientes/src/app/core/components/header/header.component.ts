@@ -3,10 +3,11 @@ import { MatDialog } from '@angular/material/dialog';
 import { RegisterComponent } from 'src/app/pages/register/register.component';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Default,
+    selector: 'app-header',
+    templateUrl: './header.component.html',
+    styleUrls: ['./header.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Default,
+    standalone: false
 })
 export class HeaderComponent implements OnInit {
 

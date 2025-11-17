@@ -6,9 +6,10 @@ import { Gender } from 'src/app/shared/enums/gender.enum';
 import { IPaciente } from 'src/app/shared/interfaces/patients.interface';
 
 @Component({
-  selector: 'app-listing',
-  templateUrl: './listing.component.html',
-  styleUrls: ['./listing.component.scss']
+    selector: 'app-listing',
+    templateUrl: './listing.component.html',
+    styleUrls: ['./listing.component.scss'],
+    standalone: false
 })
 export class ListingComponent implements OnInit {
   displayedColumns: string[] = [

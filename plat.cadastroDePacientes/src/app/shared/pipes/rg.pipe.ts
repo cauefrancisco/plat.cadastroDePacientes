@@ -1,6 +1,9 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-@Pipe({ name: 'rg' })
+@Pipe({
+    name: 'rg',
+    standalone: false
+})
 export class RgPipe implements PipeTransform {
   transform(value: string | null | undefined): string {
     if (!value) return '—';

@@ -7,10 +7,10 @@ import { Gender } from 'src/app/shared/enums/gender.enum';
 import { IPaciente } from 'src/app/shared/interfaces/patients.interface';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss'],
-
+    selector: 'app-register',
+    templateUrl: './register.component.html',
+    styleUrls: ['./register.component.scss'],
+    standalone: false
 })
 export class RegisterComponent implements OnInit {
   public form: FormGroup;
