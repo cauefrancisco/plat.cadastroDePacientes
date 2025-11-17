@@ -4,7 +4,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatNativeDateModule } from '@angular/material/core';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { bootstrapGithub, bootstrapHouse, bootstrapPersonFill } from '@ng-icons/bootstrap-icons'; // Import specific icons
+import { NgIconsModule } from '@ng-icons/core';
+import { heroUsers } from '@ng-icons/heroicons/outline';
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,7 +21,9 @@ import { CpfCnpjPipe } from './shared/pipes/cpf-cnpj.pipe';
 import { PhoneBrPipe } from './shared/pipes/phone.pipe';
 import { RgPipe } from './shared/pipes/rg.pipe';
 
-@NgModule({ declarations: [
+
+@NgModule({
+    declarations: [
         AppComponent,
         MainComponent,
         HeaderComponent,
@@ -31,11 +35,16 @@ import { RgPipe } from './shared/pipes/rg.pipe';
         RgPipe,
         PhoneBrPipe,
     ],
-    bootstrap: [AppComponent], imports: [BrowserModule,
+    bootstrap: [AppComponent],
+    imports: [
+        BrowserModule,
         AppRoutingModule,
-        BrowserAnimationsModule,
         MaterialDesignModule,
         ReactiveFormsModule,
         MatNativeDateModule,
-        NgxMaskDirective], providers: [provideNgxMask(), provideHttpClient(withInterceptorsFromDi())] })
+        NgxMaskDirective,
+        NgIconsModule.withIcons({ heroUsers, bootstrapHouse, bootstrapPersonFill, bootstrapGithub })
+    ],
+    providers: [provideNgxMask(), provideHttpClient(withInterceptorsFromDi())]
+})
 export class AppModule { }
