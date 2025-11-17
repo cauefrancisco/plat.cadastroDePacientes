@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatNativeDateModule } from '@angular/material/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -19,31 +19,23 @@ import { CpfCnpjPipe } from './shared/pipes/cpf-cnpj.pipe';
 import { PhoneBrPipe } from './shared/pipes/phone.pipe';
 import { RgPipe } from './shared/pipes/rg.pipe';
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    MainComponent,
-    HeaderComponent,
-    FooterComponent,
-    HomeComponent,
-    RegisterComponent,
-    ListingComponent,
-    CpfCnpjPipe,
-    RgPipe,
-    PhoneBrPipe,
-
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MaterialDesignModule,
-    ReactiveFormsModule,
-    MatNativeDateModule,
-    HttpClientModule,
-    NgxMaskDirective,
-  ],
-  providers: [provideNgxMask()],
-  bootstrap: [AppComponent]
-})
+@NgModule({ declarations: [
+        AppComponent,
+        MainComponent,
+        HeaderComponent,
+        FooterComponent,
+        HomeComponent,
+        RegisterComponent,
+        ListingComponent,
+        CpfCnpjPipe,
+        RgPipe,
+        PhoneBrPipe,
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MaterialDesignModule,
+        ReactiveFormsModule,
+        MatNativeDateModule,
+        NgxMaskDirective], providers: [provideNgxMask(), provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule { }
