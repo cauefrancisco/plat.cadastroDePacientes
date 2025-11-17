@@ -48,8 +48,8 @@ dotnet run
 
 
 ### A API será iniciada em:
-https://localhost:5001
-http://localhost:5000
+https://localhost:5001/swagger
+http://localhost:5000/swagger
 
 ## 6. Rodando o Frontend (Angular)
 
