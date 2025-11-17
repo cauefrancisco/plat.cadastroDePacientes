@@ -123,9 +123,7 @@ export class RegisterComponent implements OnInit {
         }
       },
       error: (err) => {
-        // Feedback de erro
         console.error('Erro ao buscar convênios:', err);
-        alert('Não foi possível carregar os convênios. Tente novamente mais tarde.')
       }
     })
   }
