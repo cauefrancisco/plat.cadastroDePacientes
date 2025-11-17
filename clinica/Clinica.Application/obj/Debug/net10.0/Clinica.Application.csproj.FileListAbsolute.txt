@@ -15,3 +15,4 @@ C:\Users\cauef\OneDrive\Documents\coding\testes_tecnicos\plat.cadastro_de_pacien
 C:\Users\cauef\OneDrive\Documents\coding\testes_tecnicos\plat.cadastro_de_pacientes\clinica\Clinica.Application\obj\Debug\net10.0\refint\Clinica.Application.dll
 C:\Users\cauef\OneDrive\Documents\coding\testes_tecnicos\plat.cadastro_de_pacientes\clinica\Clinica.Application\obj\Debug\net10.0\Clinica.Application.pdb
 C:\Users\cauef\OneDrive\Documents\coding\testes_tecnicos\plat.cadastro_de_pacientes\clinica\Clinica.Application\obj\Debug\net10.0\ref\Clinica.Application.dll
+C:\Users\cauef\OneDrive\Documents\coding\testes_tecnicos\plat.cadastro_de_pacientes\clinica\Clinica.Application\obj\Debug\net10.0\Clinica.Application.sourcelink.json

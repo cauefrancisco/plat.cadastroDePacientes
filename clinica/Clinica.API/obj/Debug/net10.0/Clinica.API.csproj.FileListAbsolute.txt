@@ -221,3 +221,4 @@ C:\Users\cauef\OneDrive\Documents\coding\testes_tecnicos\plat.cadastro_de_pacien
 C:\Users\cauef\OneDrive\Documents\coding\testes_tecnicos\plat.cadastro_de_pacientes\clinica\Clinica.API\bin\Debug\net10.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
 C:\Users\cauef\OneDrive\Documents\coding\testes_tecnicos\plat.cadastro_de_pacientes\clinica\Clinica.API\bin\Debug\net10.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
 C:\Users\cauef\OneDrive\Documents\coding\testes_tecnicos\plat.cadastro_de_pacientes\clinica\Clinica.API\bin\Debug\net10.0\runtimes\win\lib\net9.0\System.Windows.Extensions.dll
+C:\Users\cauef\OneDrive\Documents\coding\testes_tecnicos\plat.cadastro_de_pacientes\clinica\Clinica.API\obj\Debug\net10.0\Clinica.API.sourcelink.json
